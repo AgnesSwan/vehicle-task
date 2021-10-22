@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import './VehiclesList.css'
 import NotFound from "./NotFound"
+import VehicleCard from "./VehicleCard"
 
 const VehiclesList = () => {
     const [makes, setMakes] = useState([])
@@ -70,8 +71,8 @@ const VehiclesList = () => {
                         ))}
                     </select>)}
             </div>
-            {loading ? <div className="loading_container"><div className="loading" /></div> : vehicles.length !== 0 ? <div className="vehicle_container">{vehicles.map((vehicle, id) => (
-                <div key={id}>{vehicle.bodyType}</div>
+            {loading ? <div className="loading_container"><div className="loading"/></div> : vehicles.length !== 0 ? <div className="vehicle_container">{vehicles.map((vehicle, id) => (
+                <VehicleCard key={id} model={selectedModel} make={selectedMake} enginePowerPS={vehicle.enginePowerPS} enginePowerPW={vehicle.enginePowerPW} fuelType={vehicle.fuelType} bodyType={vehicle.bodyType} engineCapacity={vehicle.engineCapacity} />
             ))}</div> : <NotFound />}
         </>
     )
