@@ -65,12 +65,14 @@ const VehiclesList = () => {
         <>
             <div className="filters_container">
                 <select onChange={changeMake}>
+                    <option>--Select Make--</option>
                     {makes.map((make, id) => (
                         <option key={id} value={make} >{make}</option>
                     ))}
                 </select>
                 {models.length > 0 && (
                     <select onChange={e => setSelectedModel(e.target.value)}>
+                        <option>--Select Model--</option>
                         {models.map((model, id) => (
                             <option key={id} value={model} >{model}</option>
                         ))}
