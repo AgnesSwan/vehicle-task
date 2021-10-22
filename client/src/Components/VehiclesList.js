@@ -64,10 +64,10 @@ const VehiclesList = () => {
     return (
         <>
             <div className="filters_container">
-                <select onChange={changeMake}>
-                    <option>--Select Make--</option>
+                <select data-testid='select' onChange={changeMake}>
+                    <option data-testid="select-option">--Select Make--</option>
                     {makes.map((make, id) => (
-                        <option key={id} value={make} >{make}</option>
+                        <option data-testid="select-option" key={id} value={make} >{make}</option>
                     ))}
                 </select>
                 {models.length > 0 && (

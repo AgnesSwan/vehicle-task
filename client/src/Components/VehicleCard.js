@@ -18,7 +18,7 @@ const VehicleCard = ({ model, make, engineCapacity, bodyType, fuelType, enginePo
                 {engineCapacity && <p>Engine Capacity: {engineCapacity}</p>}
                 {enginePowerPS && <p>Engine Power PS: {enginePowerPS}</p>}
                 {enginePowerPW && <p>Engine Power PW: {enginePowerPW}</p>}
-                <button onClick={() => setOpenModal(true)}>Select</button>
+                <button data-testid="select" onClick={() => setOpenModal(true)}>Select</button>
             </div>
             {isOpenModal && <ChosenCarModal onClose={() => setOpenModal(false)} show={isOpenModal}>
                 <content>

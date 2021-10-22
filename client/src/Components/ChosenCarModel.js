@@ -5,9 +5,9 @@ import { FaCarAlt } from 'react-icons/fa'
 const ChosenCarModal = ({ onClose, children }) => {
     const [confirm, setConfirm] = useState(false)
     return (
-        <div class="modal">
+        <div className="modal" data-testid="show_modal">
             <div className="modal_container">
-                <div class="content">{children}
+                <div className="content">{children}
                 <FaCarAlt size='60px' className="icon" />
                 </div>
                 {confirm && <p style={{textAlign:'center', color: 'red'}}>The order has been confirmed</p>}
@@ -20,7 +20,7 @@ const ChosenCarModal = ({ onClose, children }) => {
                     }}>
                     Confirm
                 </button>
-                <button style={{backgroundColor:'white', color: 'rgb(30, 73, 218)', border: 'none'}}onClick={onClose}>
+                <button style={{backgroundColor:'white', color: 'rgb(30, 73, 218)', border: 'none'}} onClick={onClose}>
                     Cancel
                 </button>
                 </div>
