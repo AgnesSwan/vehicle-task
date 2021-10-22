@@ -10,6 +10,7 @@ const VehiclesList = () => {
     const [selectedMake, setSelectedMake] = useState("")
     const [selectedModel, setSelectedModel] = useState("")
     const [loading, setLoading] = useState(false)
+    const [searchTerm, setSearchTerm] = useState("")
 
     const getMakes = async () => {
         setLoading(true)
@@ -56,6 +57,10 @@ const VehiclesList = () => {
         setSelectedMake(e.target.value)
     }
 
+
+    const filteredVehicles = searchTerm.length === 0 ? vehicles
+        : vehicles.filter(vehicle =>
+            vehicle?.fuelType?.toLowerCase().includes(searchTerm.toLowerCase()) || vehicle?.bodyType?.toLowerCase().includes(searchTerm.toLowerCase()))
     return (
         <>
             <div className="filters_container">
@@ -70,8 +75,14 @@ const VehiclesList = () => {
                             <option key={id} value={model} >{model}</option>
                         ))}
                     </select>)}
+                <input
+                    type="text"
+                    placeholder="Search by body/fuel type"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
             </div>
-            {loading ? <div className="loading_container"><div className="loading"/></div> : vehicles.length !== 0 ? <div className="vehicle_container">{vehicles.map((vehicle, id) => (
+            {loading ? <div className="loading_container"><div className="loading" /></div> : vehicles.length !== 0 ? <div className="vehicle_container">{filteredVehicles.map((vehicle, id) => (
                 <VehicleCard key={id} model={selectedModel} make={selectedMake} enginePowerPS={vehicle.enginePowerPS} enginePowerPW={vehicle.enginePowerPW} fuelType={vehicle.fuelType} bodyType={vehicle.bodyType} engineCapacity={vehicle.engineCapacity} />
             ))}</div> : <NotFound />}
         </>
