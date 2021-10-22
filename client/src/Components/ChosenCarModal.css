@@ -36,6 +36,11 @@
     margin: auto;
 }
 
+.action {
+    display: flex;
+    align-content: space-around;
+}
+
 @media only screen and (max-device-width: 380px) {
     .modal_container {
         width: 50%;

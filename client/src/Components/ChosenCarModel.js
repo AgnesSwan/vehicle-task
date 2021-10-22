@@ -11,6 +11,7 @@ const ChosenCarModal = ({ onClose, children }) => {
                 <FaCarAlt size='60px' className="icon" />
                 </div>
                 {confirm && <p style={{textAlign:'center', color: 'red'}}>The order has been confirmed</p>}
+                <div className="action">
                 <button onClick={()=> {
                     setConfirm(true)
                     setTimeout(() => {
@@ -19,9 +20,10 @@ const ChosenCarModal = ({ onClose, children }) => {
                     }}>
                     Confirm
                 </button>
-                <button onClick={onClose}>
+                <button style={{backgroundColor:'white', color: 'rgb(30, 73, 218)', border: 'none'}}onClick={onClose}>
                     Cancel
                 </button>
+                </div>
             </div>
         </div>
     )
