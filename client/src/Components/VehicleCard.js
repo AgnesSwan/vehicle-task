@@ -1,8 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import './VehicleCard.css'
 import { FaCarAlt } from 'react-icons/fa'
+import ChosenCarModal from "./ChosenCarModel"
 
 const VehicleCard = ({ model, make, engineCapacity, bodyType, fuelType, enginePowerPW, enginePowerPS }) => {
+    const [isOpenModal, setOpenModal] = useState(false);
+
     return (
         <>
             <div className="card">
@@ -15,8 +18,18 @@ const VehicleCard = ({ model, make, engineCapacity, bodyType, fuelType, enginePo
                 <p>Engine Capacity: {engineCapacity}</p>
                 <p>Engine Power PS: {enginePowerPS}</p>
                 {enginePowerPW && <p>Engine Power PW: {enginePowerPW}</p>}
-                <button>Select</button>
+                <button onClick={() => setOpenModal(true)}>Select</button>
             </div>
+            {isOpenModal && <ChosenCarModal onClose={() => setOpenModal(false)} show={isOpenModal}>
+                <content>
+                        <h2>{make} {model}</h2>
+                        <p>Fuel type: {fuelType}</p>
+                        <p>Body type: {bodyType}</p>
+                        <p>Engine Capacity: {engineCapacity}</p>
+                        <p>Engine Power PS: {enginePowerPS}</p>
+                        <p>Engine Power PW: {enginePowerPW}</p>
+                </content>
+            </ChosenCarModal>}
         </>
     )
 }
